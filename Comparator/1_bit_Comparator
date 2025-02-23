@@ -1,1 +1,12 @@
+module Comparator (
+ input A,
+ input B,
+ output O_eq, O_gt, O_lt
+);
+
+    assign O_eq = ~ A ^ B;
+    assign O_gt = A & ~B;
+    assign O_lt = ~A & B;
+    
+endmodule
 
