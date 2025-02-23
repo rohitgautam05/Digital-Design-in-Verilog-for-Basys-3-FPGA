@@ -1,0 +1,25 @@
+module Comparator_tb;
+
+    reg  A, B;
+    wire O_eq, O_gt, O_lt;
+
+    // Instantiate Comparator module (ensure names match)
+    Comparator uut (
+        .A(A),   // Connect A from testbench to module input A
+        .B(B),   // Connect B from testbench to module input B
+        .O_eq(O_eq),
+        .O_gt(O_gt),
+        .O_lt(O_lt)  
+
+    initial begin
+        $monitor("Time = %0t | A = %b | B = %b | O_eq = %b | O_gt = %b | O_lt = %b", $time, A, B, O_eq, O_gt, O_lt);
+
+        // Test cases
+        A = 1'b0; B = 1'b0; #10; 
+        A = 1'b1; B = 1'b0; #10; 
+        A = 1'b0; B = 1'b1; #10; 
+        A = 1'b1; B = 4'b1; #10; 
+
+        $finish;
+    end
+endmodule
